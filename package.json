@@ -1,0 +1,32 @@
+{
+  "name": "drachtio-sip",
+  "version": "0.0.1",
+  "description": "sip message components for dracht.io",
+  "main": "index.js",
+  "dependencies": {
+    "debug": "*",
+    "merge": "^1.1.3",
+    "only": "0.0.2",
+    "sip-status": "0.0.1"
+  },
+  "devDependencies": {
+    "jsdoc": ">=3.3.0-*",
+    "minimist": ">=0.0.8",
+    "mocha": "~1.15.1",
+    "should": "~2.1.1",
+    "sip-message-examples": "*"
+  },
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/davehorton/drachtio-sip.git"
+  },
+  "author": "Dave Horton",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/davehorton/drachtio-sip/issues"
+  },
+  "homepage": "https://github.com/davehorton/drachtio-sip"
+}
