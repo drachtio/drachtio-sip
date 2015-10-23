@@ -77,6 +77,14 @@ describe('Parser', function(){
     msg.type.should.eql('response') ;
     (msg.body === null).should.be.false ;
   }) ;
+  it('should parse called number', function(){
+    var msg = new SipMessage(examples('invite')) ;
+    msg.calledNumber.should.eql('5753606') ;
+  }) ;
+  it('should parse calling number', function(){
+    var msg = new SipMessage(examples('invite')) ;
+    msg.callingNumber.should.eql('4083084809') ;
+  }) ;
   
 }) ;
 
