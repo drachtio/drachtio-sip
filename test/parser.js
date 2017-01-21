@@ -3,6 +3,7 @@ var should = require('should');
 var examples = require('sip-message-examples') ;
 var SipMessage = require('..').SipMessage ;
 var parser = require('..').parser ;
+var parseUri = require('..').parser.parseUri ;
 var debug = require('debug')('drachtio-sip') ;
 
 describe('Parser', function(){
@@ -85,6 +86,23 @@ describe('Parser', function(){
     var msg = new SipMessage(examples('invite')) ;
     msg.callingNumber.should.eql('4083084809') ;
   }) ;
-  
+  it('should parse ipv4 dot decimal sip uri', function(){
+    var uri = parseUri('sip:104461@10.1.0.100:61219;rinstance=39ccb7d8db4387b1;transport=tcp') ;
+    uri.family.should.eql('ipv4');
+    uri.host.should.eql('10.1.0.100') ;
+    uri.port.should.eql(61219);
+  }) ;
+  it('should parse ipv4 hostname sip uri', function(){
+    var uri = parseUri('sip:104461@foo.bar.com:61219;rinstance=39ccb7d8db4387b1;transport=tcp') ;
+    uri.family.should.eql('ipv4');
+    uri.host.should.eql('foo.bar.com') ;
+    uri.port.should.eql(61219);
+  }) ;
+  it('should parse ipv6 sip uri', function(){
+    var uri = parseUri('sip:104461@[2601:182:cd00:d4c6:604b:16f1:3f5a:44f8]:61219;rinstance=39ccb7d8db4387b1;transport=tcp') ;
+    uri.family.should.eql('ipv6');
+    uri.host.should.eql('[2601:182:cd00:d4c6:604b:16f1:3f5a:44f8]') ;
+    uri.port.should.eql(61219);
+  }) ;  
 }) ;
 
