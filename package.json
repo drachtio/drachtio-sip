@@ -1,6 +1,6 @@
 {
   "name": "drachtio-sip",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "sip message components for dracht.io",
   "main": "index.js",
   "dependencies": {
@@ -14,7 +14,7 @@
     "minimist": ">=0.0.8",
     "mocha": "~1.15.1",
     "should": "~2.1.1",
-    "sip-message-examples": "^git+ssh://git@github.com:davehorton/sip-message-examples.git#v0.0.2"
+    "sip-message-examples": "*"
   },
   "scripts": {
     "test": "make test"

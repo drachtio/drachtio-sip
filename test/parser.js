@@ -73,7 +73,6 @@ describe('Parser', function(){
     msg.getParsedHeader('via').should.be.an.array ;
   }) ;
   it('should parse a response', function(){
-
     var msg = new SipMessage(examples('200ok')) ;
     msg.type.should.eql('response') ;
     (msg.body === null).should.be.false ;
@@ -103,6 +102,10 @@ describe('Parser', function(){
     uri.family.should.eql('ipv6');
     uri.host.should.eql('[2601:182:cd00:d4c6:604b:16f1:3f5a:44f8]') ;
     uri.port.should.eql(61219);
+  }) ;  
+  it('should parse a multi-part header', function(){
+    var msg = new SipMessage(examples('siprec')) ;
+    msg.payload.length.should.eql(2);
   }) ;  
 }) ;
 
