@@ -103,6 +103,12 @@ describe('Parser', function(){
     uri.host.should.eql('[2601:182:cd00:d4c6:604b:16f1:3f5a:44f8]') ;
     uri.port.should.eql(61219);
   }) ;  
+  it('should parse a sip uri with a dash or underscore', function(){
+    var uri = parseUri('sip:116751x0@cor10-san.sip.phone.com') ;
+    uri.family.should.eql('ipv4');
+    uri.host.should.eql('cor10-san.sip.phone.com') ;
+    uri.user.should.eql('116751x0');
+  }) ;  
   it('should parse a multi-part header', function(){
     var msg = new SipMessage(examples('siprec')) ;
     msg.payload.length.should.eql(2);
