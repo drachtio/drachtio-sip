@@ -1,6 +1,6 @@
 {
   "name": "drachtio-sip",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "description": "sip message components for dracht.io",
   "main": "index.js",
   "dependencies": {
