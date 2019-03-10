@@ -1,19 +1,19 @@
 {
   "name": "drachtio-sip",
-  "version": "0.3.8",
+  "version": "0.3.9",
   "description": "sip message components for dracht.io",
   "main": "index.js",
   "dependencies": {
     "debug": "^4.1.1",
     "merge": ">=1.2.1",
     "only": "0.0.2",
+    "sip-message-examples": "0.0.5",
     "sip-status": "~0.1.0"
   },
   "devDependencies": {
     "minimist": ">=0.0.8",
     "mocha": "^5.2.0",
-    "should": "~2.1.1",
-    "sip-message-examples": "*"
+    "should": "~2.1.1"
   },
   "scripts": {
     "test": "make test"
