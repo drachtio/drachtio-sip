@@ -85,6 +85,12 @@ describe('Parser', function(){
     var msg = new SipMessage(examples('invite')) ;
     msg.callingNumber.should.eql('4083084809') ;
   }) ;
+  it('should parse calling name', function(){
+    var msg = new SipMessage() ;
+    msg.set('From', '"Dave" <sip:daveh@localhost>;tag=1234') ;
+    msg.get('From').should.eql('"Dave" <sip:daveh@localhost>;tag=1234') ;
+    msg.callingName.should.eql('Dave');
+  }) ;
   it('should parse ipv4 dot decimal sip uri', function(){
     var uri = parseUri('sip:104461@10.1.0.100:61219;rinstance=39ccb7d8db4387b1;transport=tcp') ;
     uri.family.should.eql('ipv4');
