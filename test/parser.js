@@ -109,6 +109,13 @@ describe('Parser', function(){
     uri.host.should.eql('cor10-san.sip.phone.com') ;
     uri.user.should.eql('116751x0');
   }) ;  
+  it('should parse a sips uri', function(){
+    var uri = parseUri('sips:116751x0@cor10-san.sip.phone.com') ;
+    uri.family.should.eql('ipv4');
+    uri.host.should.eql('cor10-san.sip.phone.com') ;
+    uri.user.should.eql('116751x0');
+    uri.scheme.should.eql('sips');
+  }) ;  
   it('should parse a multi-part header', function(){
     var msg = new SipMessage(examples('siprec')) ;
     msg.payload.length.should.eql(2);
@@ -121,6 +128,12 @@ describe('Parser', function(){
     var uri = parseUri('sip:service@test_sipp-uas_1.com') ;
     uri.family.should.eql('ipv4');
     uri.host.should.eql('test_sipp-uas_1.com') ;
-  }) ;  
+  }) ;
+  it('should parse calling name', function(){
+    var msg = new SipMessage() ;
+    msg.set('From', '"Dave" <sip:daveh@localhost>;tag=1234') ;
+    msg.get('From').should.eql('"Dave" <sip:daveh@localhost>;tag=1234') ;
+    msg.callingName.should.eql('Dave');
+  }) ;
 }) ;
 
