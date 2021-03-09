@@ -123,8 +123,12 @@ describe('Parser', function(){
   it('should parse a multi-part header with whitespace before boundary', function(){
     var msg = new SipMessage(examples('siprec2')) ;
     msg.payload.length.should.eql(2);
-  }) ;  
-  it('should parse a sip uri with a dash or underscore', function(){
+  }) ;
+  it('should parse a multi-part header with quoted boundary', function(){
+      var msg = new SipMessage(examples('siprec3')) ;
+      msg.payload.length.should.eql(2);
+  }) ;
+    it('should parse a sip uri with a dash or underscore', function(){
     var uri = parseUri('sip:service@test_sipp-uas_1.com') ;
     uri.family.should.eql('ipv4');
     uri.host.should.eql('test_sipp-uas_1.com') ;
