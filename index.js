@@ -6,7 +6,7 @@ var parser = require('./lib/parser') ;
 */
 
 module.exports = {
-  SipMessage: SipMessage
-  ,parser: parser
+  SipMessage: SipMessage,
+  parser: parser
 } ;
-  
+
