@@ -17,7 +17,8 @@
   },
   "scripts": {
     "test": "make test",
-    "jslint": "eslint lib"
+    "jslint": "eslint lib",
+    "generate-types": "npx -p typescript tsc index.js --declaration --allowJs --emitDeclarationOnly --outDir types"
   },
   "repository": {
     "type": "git",
