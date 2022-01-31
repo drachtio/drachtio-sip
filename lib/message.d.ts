@@ -3,7 +3,7 @@ export = SipMessage;
 
 declare class SipMessage {
     constructor(msg: string | ParsedMessage);
-    headers: Record<string, string>;
+    headers: Record<string, any>;
     raw: string;
     get type(): "request" | "response";
     get calledNumber(): string;
