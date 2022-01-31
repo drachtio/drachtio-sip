@@ -1,7 +1,8 @@
+import { ParsedMessage, URI } from "./parser";
 export = SipMessage;
 
 declare class SipMessage {
-    constructor(msg: string | object);
+    constructor(msg: string | ParsedMessage);
     headers: Record<string, string>;
     raw: string;
     get type(): "request" | "response";
@@ -9,10 +10,10 @@ declare class SipMessage {
     get callingNumber(): string;
     get callingName(): string;
     get canFormDialog(): boolean;
-    set(hdr: string | object, value: string): SipMessage;
+    set(hdr: string | ParsedMessage, value: string): SipMessage;
     get(hdr: string): string;
     has(hdr: string): boolean;
-    getParsedHeader(hdr: string): any;
+    getParsedHeader(hdr: string): Record<string, any>;
     toString(): string;
-    static parseUri(s:string): any;
+    static parseUri(s: string | URI): URI | undefined;
 }

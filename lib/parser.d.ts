@@ -1,12 +1,7 @@
-export type Authorization = {
+export type Auth = {
     scheme: string;
     [key: string]: string;
 }
-
-export type Payload = {
-    content: string;
-    type: string;
-};
 
 export type ParsedMessage = {
     body: string;
@@ -17,6 +12,11 @@ export type ParsedMessage = {
     status?: number;
     uri?: string;
     version: string;
+};
+
+export type Payload = {
+    content: string;
+    type: string;
 };
 
 export type URI = {
@@ -33,10 +33,10 @@ export type URI = {
 declare function parseMessage(s: string, lazy: boolean): ParsedMessage;
 declare function stringify(m: ParsedMessage): string;
 
-export function stringifyUri(uri: string | URI): string;
-export function parseUri(s: string | URI): URI | undefined;
 export function getHeaderName(hdr: string): string;
-export function stringifyAuthHeader(a: Authorization): string;
 export function getParser(hdr: string): Function;
 export function getStringifier(hdr: string): Function;
+export function parseUri(s: string | URI): URI | undefined;
+export function stringifyUri(uri: string | URI): string;
+export function stringifyAuthHeader(a: Auth): string;
 export { parseMessage as parseSipMessage, stringify as stringifySipMessage };
