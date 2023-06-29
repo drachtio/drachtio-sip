@@ -13,7 +13,7 @@
     "eslint-plugin-promise": "^4.2.1",
     "mocha": "^9.0.2",
     "should": "^13.2.3",
-    "sip-message-examples": "0.0.6"
+    "sip-message-examples": "0.0.7"
   },
   "scripts": {
     "test": "make test",

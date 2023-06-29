@@ -14,7 +14,7 @@ describe('Parser', function(){
   it('should optionally provide a parsed header', function(){
     var msg = new SipMessage(examples('invite')) ;
     var obj = msg.getParsedHeader('from') ;
-    obj.should.be.type('object'); 
+    obj.should.be.type('object');
     obj.should.have.property('uri') ;
   }) ;
 
@@ -102,24 +102,24 @@ describe('Parser', function(){
     uri.family.should.eql('ipv6');
     uri.host.should.eql('[2601:182:cd00:d4c6:604b:16f1:3f5a:44f8]') ;
     uri.port.should.eql(61219);
-  }) ;  
+  }) ;
   it('should parse a sip uri with a dash or underscore', function(){
     var uri = parseUri('sip:116751x0@cor10-san.sip.phone.com') ;
     uri.family.should.eql('ipv4');
     uri.host.should.eql('cor10-san.sip.phone.com') ;
     uri.user.should.eql('116751x0');
-  }) ;  
+  }) ;
   it('should parse a sips uri', function(){
     var uri = parseUri('sips:116751x0@cor10-san.sip.phone.com') ;
     uri.family.should.eql('ipv4');
     uri.host.should.eql('cor10-san.sip.phone.com') ;
     uri.user.should.eql('116751x0');
     uri.scheme.should.eql('sips');
-  }) ;  
+  }) ;
   it('should parse a multi-part header', function(){
     var msg = new SipMessage(examples('siprec')) ;
     msg.payload.length.should.eql(2);
-  }) ;  
+  }) ;
   it('should parse a multi-part header with whitespace before boundary', function(){
     var msg = new SipMessage(examples('siprec2')) ;
     msg.payload.length.should.eql(2);
@@ -138,6 +138,10 @@ describe('Parser', function(){
     msg.set('From', '"Dave" <sip:daveh@localhost>;tag=1234') ;
     msg.get('From').should.eql('"Dave" <sip:daveh@localhost>;tag=1234') ;
     msg.callingName.should.eql('Dave');
+  }) ;
+  it('should parse request with carriage return on last line', function(){
+    var msg = new SipMessage(examples('options-carriage-return')) ;
+    (typeof msg.get('from')).should.eql('string') ;
   }) ;
 }) ;
 
