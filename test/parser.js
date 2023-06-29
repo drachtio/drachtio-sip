@@ -6,18 +6,6 @@ var parser = require('..').parser ;
 var parseUri = require('..').parser.parseUri ;
 var debug = require('debug')('drachtio-sip') ;
 
-var optionsMsg =  'OPTIONS sip:mgAUQnkm@3.208.209.143 SIP/2.0\r\n' +
-'Via: SIP/2.0/UDP 192.241.212.6:56500;branch=nGTWdf.1124599842;rport;alias\r\n' +
-'From: sip:OYlmFAQc@192.241.212.6:56500;tag=71186921\r\n' +
-'To: sip:RTGYLGsX@3.208.209.143\r\n' +
-'Call-ID: 3652223354@192.241.212.6\r\n' +
-'CSeq: 1 OPTIONS\r\n' +
-'Contact: sip:IDwgWVsn@192.241.212.6:56500\r\n' +
-'Content-Length: 0\r\n' +
-'Max-Forwards: 20\r\n' +
-'User-Agent: wFkdhplQ\r\n' +
-'Accept: text/plain\r\n';
-
 describe('Parser', function(){
   it('should provide headers as string values', function(){
     var msg = new SipMessage(examples('invite')) ;
@@ -152,7 +140,7 @@ describe('Parser', function(){
     msg.callingName.should.eql('Dave');
   }) ;
   it('should parse request with carriage return on last line', function(){
-    var msg = new SipMessage(optionsMsg) ;
+    var msg = new SipMessage(examples('options-carriage-return')) ;
     (typeof msg.get('from')).should.eql('string') ;
   }) ;
 }) ;
